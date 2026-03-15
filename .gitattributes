@@ -1,0 +1,5 @@
+# Keep shell scripts with LF line endings on all platforms
+*.sh text eol=lf
+
+# Markdown and text files use platform line endings
+*.md text
