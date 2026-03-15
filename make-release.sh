@@ -49,9 +49,9 @@ TARBALL_SIZE=$(du -sh "${TARBALL}" | cut -f1)
 echo "Created: ${TARBALL} (${TARBALL_SIZE})"
 
 if command -v sha256sum &>/dev/null; then
-    sha256sum "${TARBALL}" > "${CHECKSUM}"
+    (cd "${DIST_DIR}" && sha256sum "$(basename "${TARBALL}")") > "${CHECKSUM}"
 elif command -v shasum &>/dev/null; then
-    shasum -a 256 "${TARBALL}" > "${CHECKSUM}"
+    (cd "${DIST_DIR}" && shasum -a 256 "$(basename "${TARBALL}")") > "${CHECKSUM}"
 else
     echo "WARNING: sha256sum/shasum not found, skipping checksum"
 fi
