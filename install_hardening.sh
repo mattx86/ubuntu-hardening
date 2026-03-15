@@ -2,6 +2,10 @@
 # =============================================================================
 # install_hardening.sh
 # Ubuntu 24.04 System Hardening
+# Version 1.0
+#
+# Copyright (c) 2026 Matt Smith
+# MIT License — see LICENSE.md for full license text
 # =============================================================================
 # Usage:
 #   sudo ./install_hardening.sh
