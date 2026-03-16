@@ -2,7 +2,7 @@
 # =============================================================================
 # install_hardening.sh
 # Ubuntu 24.04 System Hardening
-# Version 1.0
+# Version 1.0.1
 #
 # Copyright (c) 2026 Matt Smith
 # MIT License — see LICENSE.md for full license text
@@ -356,7 +356,8 @@ LogLevel VERBOSE
 
 # Authentication
 LoginGraceTime 60
-PermitRootLogin prohibit-password
+PermitRootLogin yes
+PasswordAuthentication yes
 StrictModes yes
 MaxAuthTries 4
 MaxSessions 10
