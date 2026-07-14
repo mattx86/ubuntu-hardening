@@ -48,10 +48,14 @@ tar -czf "${TARBALL}" \
 TARBALL_SIZE=$(du -sh "${TARBALL}" | cut -f1)
 echo "Created: ${TARBALL} (${TARBALL_SIZE})"
 
+# Run from inside dist/ so the checksum file records only the tarball's
+# basename, not this build machine's absolute path — a checksum recorded
+# with an absolute path would not resolve on another machine running
+# `sha256sum --check` from its own download dir.
 if command -v sha256sum &>/dev/null; then
-    (cd "${DIST_DIR}" && sha256sum "$(basename "${TARBALL}")") > "${CHECKSUM}"
+    ( cd "${DIST_DIR}" && sha256sum "${RELEASE_NAME}.tar.gz" > "${RELEASE_NAME}.sha256" )
 elif command -v shasum &>/dev/null; then
-    (cd "${DIST_DIR}" && shasum -a 256 "$(basename "${TARBALL}")") > "${CHECKSUM}"
+    ( cd "${DIST_DIR}" && shasum -a 256 "${RELEASE_NAME}.tar.gz" > "${RELEASE_NAME}.sha256" )
 else
     echo "WARNING: sha256sum/shasum not found, skipping checksum"
 fi

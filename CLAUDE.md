@@ -11,7 +11,7 @@ A standalone, general-purpose Ubuntu 24.04 server hardening script.
 All logic lives in `install_hardening.sh`. There are no other scripts or dependencies.
 
 ## What It Does (in order)
-0. System update — apt update/upgrade/dist-upgrade, install essential packages, enable unattended-upgrades
+0. System update — apt update/upgrade/dist-upgrade, install essential packages
 0.5. UFW firewall — deny incoming, allow outgoing, allow SSH only
 1. Filesystem hardening — disable unused filesystems, harden /tmp /var/tmp /dev/shm
 2. Services — disable/remove unnecessary services and packages; disable MOTD news

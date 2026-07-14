@@ -20,7 +20,7 @@ A reboot is recommended after the script completes.
 
 | Step | Description |
 |------|-------------|
-| 0 | System update — full apt upgrade, essential packages, unattended-upgrades |
+| 0 | System update — full apt upgrade, essential packages |
 | 0.5 | UFW firewall — deny all incoming except SSH |
 | 1 | Filesystem hardening — disable unused filesystems, harden /tmp /var/tmp /dev/shm |
 | 2 | Services — disable and remove unnecessary services and packages; disable MOTD news |

@@ -2,7 +2,7 @@
 # =============================================================================
 # install_hardening.sh
 # Ubuntu 24.04 System Hardening
-# Version 1.0.1
+# Version 1.0.2
 #
 # Copyright (c) 2026 Matt Smith
 # MIT License — see LICENSE.md for full license text
@@ -83,32 +83,7 @@ apt-get -y install \
     apt-transport-https \
     ca-certificates \
     gnupg \
-    lsb-release \
-    unattended-upgrades \
-    apt-listchanges
-
-log "  Enabling unattended upgrades..."
-cat > /etc/apt/apt.conf.d/20auto-upgrades << 'EOF'
-APT::Periodic::Update-Package-Lists "1";
-APT::Periodic::Unattended-Upgrade "1";
-APT::Periodic::AutocleanInterval "7";
-EOF
-
-cat > /etc/apt/apt.conf.d/50unattended-upgrades << 'EOF'
-Unattended-Upgrade::Allowed-Origins {
-    "${distro_id}:${distro_codename}";
-    "${distro_id}:${distro_codename}-security";
-    "${distro_id}ESMApps:${distro_codename}-apps-security";
-    "${distro_id}ESM:${distro_codename}-infra-security";
-};
-Unattended-Upgrade::AutoFixInterruptedDpkg "true";
-Unattended-Upgrade::MinimalSteps "true";
-Unattended-Upgrade::Remove-Unused-Dependencies "true";
-Unattended-Upgrade::Automatic-Reboot "false";
-EOF
-
-systemctl enable unattended-upgrades
-systemctl restart unattended-upgrades
+    lsb-release
 
 log_success "System update complete"
 
